@@ -1,0 +1,67 @@
+﻿
+@model Prototyp.Models.Club
+
+@{
+    ViewBag.Title = "Clubs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+    @using (Html.BeginForm("Form", "Clubs", FormMethod.Post))
+    {
+        <div class="pageContainer">
+            <div class="pageLeft">
+                <h1>@ViewData["Title"]</h1>
+                <hr />
+                <label for="name" class="input-label">Club Name:</label>
+                @Html.TextBox("name", null, new { @class = "input", type = "text" })
+                <br />
+
+                <br />
+                <p>Athletes</p>
+                    @Html.TextArea("athletes", null, new { @class = "textarea", type = "text" })
+                    <div class="search-field">
+                        @Html.TextBox("athleteName", "Athlete Name", new { @class = "search", type = "text" })
+                        <div class="secondaryButtonContainer">
+                            <a href="/Club/save">
+                                <img src="~/Content/Pictures/Save.PNG" class="secondaryButton">
+                            </a>
+                            <a href="/Club/Cancle">
+                                <img src="~/Content/Pictures/Cancle.PNG" class="secondaryButton">
+                            </a>
+                        </div>
+                    </div>
+            </div>
+            <div class="pageRight">
+                <div class="chooseItem search-field">
+                    @Html.DropDownList("Clubs", ViewBag.Clubs as List<SelectListItem>, "Select Club", new { @class = "form-control search-field input" })
+                </div>
+
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+                <div class="empty"></div>
+
+                <div style="text-align: right; padding-top: 20px;">
+                    <a href="/Athlete/save">
+                        <img src="~/Content/Pictures/Save.PNG" class="pageButton">
+                    </a>
+                    <a href="/Athlete/Cancle">
+                        <img src="~/Content/Pictures/Cancle.PNG" class="pageButton">
+                    </a>
+                </div>
+            </div>
+        </div>
+
+     
+    }
+</div>
+
+
+

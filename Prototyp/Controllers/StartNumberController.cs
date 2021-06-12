@@ -9,18 +9,18 @@ namespace Prototyp.Controllers
 {
     public class StartNumberController : Controller
     {
-        public List<NumberSet> numberSets;
+        private List<NumberSet> numberSets;
         private List<NumberSet.NumberClass> numberClasses;
         private int counter = 20;
 
         public ActionResult Index()
         {
-            CreateList();
+            numberSets = CreateList();
 
             return View("~/Views/StartNumber.cshtml", numberSets[0]);
         }
 
-        public void CreateList()
+        public List<NumberSet> CreateList()
         {
             NumberSet ns;
             NumberSet.NumberClass nc;
@@ -83,6 +83,7 @@ namespace Prototyp.Controllers
 
             }
             // --------------------------------------------------------------------------------------------
+            return numberSets;
         }
 
         [HttpPost]

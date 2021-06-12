@@ -9,15 +9,38 @@ namespace Prototyp.Controllers
 {
     public class EventController : Controller
     {
+        private List<Event> events;
+        private int counter = 10;
         // GET: Events
         public ActionResult Index()
         {
-            var varEvent = new Event(1);
-            varEvent.eventName = "TestEvent";
-            varEvent.date = DateTime.Now;
-            return View("~/Views/Event.cshtml", varEvent);
-        }
+            createList();
 
+            return View("~/Views/Event.cshtml", events[1]);
+        }
+        private void createList()
+        {
+            Event e;
+            StartNumberController nc = new StartNumberController();
+
+            events = new List<Event>();
+
+
+            List<NumberSet> numberSets = nc.CreateList();
+            for (int i = 1; i < counter; i++)
+            {
+                e = new Event(i);
+                foreach (NumberSet numberSet in numberSets)
+                {
+                    if(e.FK_numberSet == numberSet.id)
+                    {
+                        e.numberSet = numberSet;
+                        events.Add(e);
+                    }
+                }
+            }
+        }
+        
         [HttpPost]
         public ActionResult Form(Event varEvent)
         {

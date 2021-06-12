@@ -14,7 +14,7 @@ namespace Prototyp
         public static void connectDatabase()
         {
             con = new SqlConnection();
-            con.ConnectionString = @"Data Source = al190\MSSQLSERVER2019;
+            con.ConnectionString = @"Data Source = LAPTOP-QCI6D1KK\MSSQLSERVER2019;
                 Initial Catalog = RLP2021_INA3a_Gruppe2;
                 Integrated Security = True"; 
         }
@@ -49,7 +49,7 @@ namespace Prototyp
             }
             catch (Exception)
             {
-                throw;
+                //throw;
             }
             
         }

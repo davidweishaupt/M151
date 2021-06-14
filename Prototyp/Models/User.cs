@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace Prototyp.Models
 {
@@ -10,11 +12,18 @@ namespace Prototyp.Models
     {
         public int id { get; set; }
         public string username { get; set; }
+        [DisplayName("User Name")]
+        [Required(ErrorMessage = "This field is mandatory")]
+       
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string password { get; set; }
+        [DataType(DataType.Password)]
+        [Required(ErrorMessage = "This field is mandatory")]
         public string role { get; set; }
         public List<Event> events { get; set; }
+        public List<User> usernames { get; set; }
+        public string loginErrorMessage { get; set; }
 
         public User(int i)
         {

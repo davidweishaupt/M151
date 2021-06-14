@@ -12,28 +12,55 @@ namespace Prototyp.Controllers
     public class AthleteController : Controller
     {
         private List<Athlete> athletes;
+        private Athlete selectedAthlete;
 
         public List<Athlete> getList()
         {
-            if(athletes == null)
+            if (athletes == null)
             {
                 createList();
             }
             return athletes;
         }
+
         private void createList()
         {
             athletes = new List<Athlete>();
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 20; i++)
             {
                 athletes.Add(new Athlete(i));
             }
         }
-        // GET: Athlete
+
+        public void athleteChanged(int id)
+        {
+            getAthlete(id);
+        }
+
+        [HttpGet]
+        private ActionResult getAthlete(int id)
+        {
+            getList();
+            
+
+            return View();
+
+        }
+
+        // GET: Athletes
         public ActionResult Index()
         {
             createList();
             ViewBag.Athletes = new SelectList(athletes, "id", "firstName");
+            ViewBag.firstName = athletes[0].firstName;
+            ViewBag.lastName = athletes[0].lastName;
+            ViewBag.birthDate = athletes[0].birthDate;
+            ViewBag.street = athletes[0].home.streetName;
+            ViewBag.number = athletes[0].home.streetNumber;
+            ViewBag.plz = athletes[0].home.postalCode;
+            ViewBag.city = athletes[0].home.city;
+            ViewBag.gender = athletes[0].gender;
+
             return View("~/Views/Athlete.cshtml");
         }
 

@@ -87,12 +87,14 @@ namespace Prototyp.Models
             public void getData(int i)
             {
                 
-                string sql = "SELECT id, number, FK_numberSet, FK_athleteId FROM StartNumbers WHERE id = ";
+                string sql = "SELECT id, number, FK_numberSet FROM StartNumbers WHERE id = 1";
                 sql += i.ToString();
 
                 DbManager.con.Open();
                 using (SqlCommand command = new SqlCommand(sql, DbManager.con))
-                using (SqlDataReader reader = command.ExecuteReader())
+                using (
+                    
+                    SqlDataReader reader = command.ExecuteReader())
                 {
                     try
                     {

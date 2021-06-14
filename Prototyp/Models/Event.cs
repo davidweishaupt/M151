@@ -8,25 +8,27 @@ namespace Prototyp.Models
 {
     public class Event
     {
-        public String eventName { get; set; }
+        public int id { get; set; }
         public DateTime date { get; set; }
         public Address location { get; set; }
-        public List<Club> clubs { get; set; }
-        public List<Discipline> disciplines { get; set; }
+        //public List<Club> clubs { get; set; }
+        //public List<Discipline> disciplines { get; set; }
         public NumberSet numberSet { get; set; }
-        public Event(int id)
+        public int FK_categoryId { get; set; }
+        public int FK_numberSet { get; set; }
+
+        public Event(int i)
         {
-            getData(id);
+            getData(i);
             // initialisiert die Liste
-            clubs = new List<Club>();
-            disciplines = new List<Discipline>();
+            
 
         }
 
-        public void getData(int id)
+        public void getData(int i)
         {
-            string sql = "Select id, date, street, streetNumber, plz, city From Events WHERE id = ";
-            sql += id.ToString();
+            string sql = "SELECT id, date, street, streetNumber, plz, city, FK_categoryId, FK_numberSet FROM Events Where id = ";
+            sql += i.ToString();
 
 
             string streetName = "";
@@ -65,6 +67,14 @@ namespace Prototyp.Models
                     if (!reader.IsDBNull(5))
                     {
                         city = reader.GetString(5);
+                    }
+                    if (!reader.IsDBNull(6))
+                    {
+                        FK_categoryId = reader.GetInt32(6);
+                    }
+                    if (!reader.IsDBNull(7))
+                    {
+                        FK_numberSet = reader.GetInt32(7);
                     }
 
                     //Neue Adresse Erstellen

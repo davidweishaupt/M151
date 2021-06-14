@@ -12,15 +12,16 @@
                 <h1>@ViewData["Title"]</h1>
                 <hr />
                 <label for="setName" class="input-label">Set Name:</label>
-                @Html.TextBox("name", null, new { @class = "input", type = "text" })
-                <br />
+                @Html.TextBox("txtSetName", (string)ViewBag.location, new { @class = "input", type = "text" })
+
                 <br />
                 <p>Numbers</p>
-                @Html.TextArea("disciplines", "", new { @class = "textarea", type = "text" })
+
                 <br />
                 <div class="search-field">
                     @Html.TextBox("startNumber", "Number", new { @class = "search", type = "text" })
-                    <div class="secondaryButtonContainer">
+                    <div class="secondar
+                         ButtonContainer">
                         <a href="/Athlete/save">
                             <img src="~/Content/Pictures/Save.PNG" class="secondaryButton">
                         </a>
@@ -62,9 +63,7 @@
                 <div class="empty"></div>
                 <div class="empty"></div>
                 <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
+
 
                 <div style="text-align: right;">
                     <a href="/Athlete/save">

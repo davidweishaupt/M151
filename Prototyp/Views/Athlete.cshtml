@@ -1,5 +1,4 @@
-﻿
-@model Prototyp.Models.Athlete
+﻿@model Prototyp.Models.Athlete
 
 @{
     ViewBag.Title = "Athlete";
@@ -15,37 +14,30 @@
                 <h1>@ViewData["Title"]</h1>
                 <hr />
                 <label class="input-label">First Name: </label>
-                
-                
-
-                @Html.TextBoxFor(m => m.firstName);
-
+                @Html.TextBox("txtFirstName", (string)ViewBag.firstName, new { @class = "input", type = "text" })
                 <br />
                 <label class="input-label">Last Name: </label>
-                @Html.TextBoxFor(m => m.lastName);
-         
+                @Html.TextBox("txtLastName", (string)ViewBag.lastName, new { @class = "input", type = "text" })
+                <br />
+                <label class="input-label">Birth date: </label>
+                @Html.TextBox(ViewBag.birthDate.ToString("dd/MM/yyyy") as String, null, new { @class = "input", type = "date" })
                 <br />
                 <label class="input-label">Street: </label>
-                @Html.TextBoxFor(m => m.home.streetName);
-         
+                @Html.TextBox("txtStreet", (string)ViewBag.street, new { @class = "input", type = "text" })
                 <br />
                 <label class="input-label">Number: </label>
-                @Html.TextBoxFor(m => m.home.streetNumber);
-     
+                @Html.TextBox("txtStrNumber", (int)ViewBag.number, new { @class = "input", type = "text" })
                 <br />
                 <label class="input-label">PostalCode: </label>
-                @Html.TextBoxFor(m => m.home.postalCode);
- 
+                @Html.TextBox("txtPLZ", (int)ViewBag.plz, new { @class = "input", type = "text" })
                 <br />
                 <label class="input-label">City: </label>
-                @Html.TextBoxFor(m => m.home.city);
-               
-
-
+                @Html.TextBox("txtCity", (string)ViewBag.city, new { @class = "input", type = "text" })
             </div>
             <div class="pageRight">
                 <div class="chooseItem search-field">
                     @Html.DropDownList("Athletes", ViewBag.Athletes as List<SelectListItem>, "Select Athlete", new { @class = "form-control search-field input" })
+                    @*@Html.DropDownList("Athletes", ViewBag.Athletes as List<SelectListItem>, new { onchange = "document.location.href = '/Athlete/athleteChanged?id=' + this.options[this.selectedIndex].value;" })*@
                 </div>
 
                 <div class="empty"></div>
@@ -54,23 +46,20 @@
                     <img src="~/Content/Pictures/Male.PNG" alt="Male">
                     <img src="~/Content/Pictures/Female.PNG" alt="Female">
                     <br />
-                    @Html.RadioButton("gender", "Male", new { @class = "radioButton" })
-                    @Html.RadioButton("gender", "Female", new { @class = "radioButton" })
+                    @Html.RadioButton("gender", "Male", new { @class = "radioButton", @checked = ViewBag.gender == true })
+                    @Html.RadioButton("gender", "Female", new { @class = "radioButton", @checked = ViewBag.gender == false })
                 </div>
 
                 <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
-                <div class="empty"></div>
+
                 <div class="empty"></div>
                 <div class="empty"></div>
                 <div class="empty"></div>
 
                 <div style="text-align: right;">
-                    <button type="submit">
+                    <a href="/Athlete/Save">
                         <img src="~/Content/Pictures/Save.PNG" class="pageButton">
-                    </button>
-
+                    </a>
 
                     <a href="/Athlete/Cancle">
                         <img src="~/Content/Pictures/Cancle.PNG" class="pageButton">

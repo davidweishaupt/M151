@@ -16,7 +16,8 @@ namespace Prototyp.Controllers
         public ActionResult Index()
         {
             numberSets = CreateList();
-
+            ViewBag.setName = numberSets[0].name;
+ 
             return View("~/Views/StartNumber.cshtml", numberSets[0]);
         }
 
@@ -75,10 +76,10 @@ namespace Prototyp.Controllers
             {
                 foreach (Club club in clubs)
                 {
-                    if (club.id == number.athlete.clubId)
-                    {
-                        number.club = club;
-                    }
+                    //if (club.id == number.athlete.clubId)
+                    //{
+                    //    number.club = club;
+                    //}
                 }
 
             }

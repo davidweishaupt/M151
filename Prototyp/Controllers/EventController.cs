@@ -16,7 +16,11 @@ namespace Prototyp.Controllers
         {
             createList();
 
-            return View("~/Views/Event.cshtml", events[1]);
+            ViewBag.Events = new SelectList(events, "id", "location.city");
+            ViewBag.date = events[1].date;
+            ViewBag.location = events[1].location.city;
+
+            return View("~/Views/Event.cshtml");
         }
         private void createList()
         {
@@ -35,9 +39,10 @@ namespace Prototyp.Controllers
                     if(e.FK_numberSet == numberSet.id)
                     {
                         e.numberSet = numberSet;
-                        events.Add(e);
                     }
                 }
+                events.Add(e);
+
             }
         }
         

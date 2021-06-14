@@ -26,7 +26,7 @@ namespace Prototyp.Controllers
         private void createList()
         {
             athletes = new List<Athlete>();
-            for (int i = 1; i <= 10; i++)
+            for (int i = 1; i <= 20; i++)
             {
                 athletes.Add(new Athlete(i));
             }

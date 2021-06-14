@@ -8,9 +8,9 @@ namespace Prototyp.Models
 {
     public class Discipline
     {
+        public int id { get; set; }
         public string name { get; set; }
         public Category category { get; set; }
-        private int id;
         List<Category> categories = new List<Category>();
 
         public Discipline(int input)

@@ -17,6 +17,8 @@ namespace Prototyp.Controllers
             
             createList();
             ViewBag.Clubs = new SelectList(clubs, "id", "name");
+            ViewBag.clubName = clubs[0].name;
+            
             return View("~/Views/Club.cshtml");
         }
         

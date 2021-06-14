@@ -12,11 +12,8 @@
                 <h1>Events</h1>
                 <hr />
                 <div class="controlForm">
-                    <label class="input-label">Event Name:</label>
-                    @Html.TextBox("eventName", null, new { @class = "input", type = "text" })
-                    <br />
                     <label class="input-label">Date:</label>
-                    @Html.TextBox(ViewBag.VarEvent.date.ToString("dd/MM/yyyy") as String, null, new { @class = "input", type = "date" })
+                    @Html.TextBox(ViewBag.date.ToString("dd/MM/yyyy") as String, null, new { @class = "input", type = "date" })
                     <br />
 
 
@@ -47,32 +44,32 @@
                 </div>
 
                 <br /> <br />
-                <div class="controlForm">
-                    <label class="input-label" for="eventCity">City:</label>
-                    @Html.TextBox("location", "", new { @class = "input", type = "text" })
-                    <br />
-                    <label for="startNoSet" class="input-label">Start No Set:</label>
-                    @*@Html.DropDownList("NumberSets", ViewBag.NumberSets as List<SelectListItem>, "Select NumberSets", new { @class = "form-control input" })*@
+                       <div class="controlForm">
+                           <label class="input-label" for="eventCity">City:</label>
+                           @Html.TextBox("txtLocation", (string)ViewBag.location, new { @class = "input", type = "text" })
+                           <br />
+                           <label for="startNoSet" class="input-label">Start No Set:</label>
+                           @*@Html.DropDownList("NumberSets", ViewBag.NumberSets as List<SelectListItem>, "Select NumberSets", new { @class = "form-control input" })*@
 
-                    <br />
-                    <p style="padding-top: 50px;">Clubs participating</p>
-                    <form action="">
-                        @Html.TextArea("clubName", "", new { @class = "textarea", type = "text" })
-                        <br />
-                        <div class="search-field">
-                            @Html.TextBox("club.name", "Club Name", new { @class = "search", type = "text" })
-                            <div class="secondaryButtonContainer">
-                                <a href="/Athlete/save">
-                                    <img src="~/Content/Pictures/Save.PNG" class="secondaryButton">
-                                </a>
-                                <a href="/Athlete/Cancle">
-                                    <img src="~/Content/Pictures/Cancle.PNG" class="secondaryButton">
-                                </a>
-                            </div>
-                        </div>
-                        <br />
-                    </form>
-                </div>
+                           <br />
+                           <p style="padding-top: 50px;">Clubs participating</p>
+                           <form action="">
+                               @Html.TextArea("clubName", "", new { @class = "textarea", type = "text" })
+                               <br />
+                               <div class="search-field">
+                                   @Html.TextBox("club.name", "Club Name", new { @class = "search", type = "text" })
+                                   <div class="secondaryButtonContainer">
+                                       <a href="/Athlete/save">
+                                           <img src="~/Content/Pictures/Save.PNG" class="secondaryButton">
+                                       </a>
+                                       <a href="/Athlete/Cancle">
+                                           <img src="~/Content/Pictures/Cancle.PNG" class="secondaryButton">
+                                       </a>
+                                   </div>
+                               </div>
+                               <br />
+                           </form>
+                       </div>
 
                 <br />                
                 <br />

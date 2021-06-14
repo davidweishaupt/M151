@@ -8,6 +8,7 @@ namespace Prototyp.Models
 {
     public class Event
     {
+        public int id { get; set; }
         public DateTime date { get; set; }
         public Address location { get; set; }
         //public List<Club> clubs { get; set; }
@@ -16,18 +17,18 @@ namespace Prototyp.Models
         public int FK_categoryId { get; set; }
         public int FK_numberSet { get; set; }
 
-        public Event(int id)
+        public Event(int i)
         {
-            getData(id);
+            getData(i);
             // initialisiert die Liste
             
 
         }
 
-        public void getData(int id)
+        public void getData(int i)
         {
             string sql = "SELECT id, date, street, streetNumber, plz, city, FK_categoryId, FK_numberSet FROM Events Where id = ";
-            sql += id.ToString();
+            sql += i.ToString();
 
 
             string streetName = "";

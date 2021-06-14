@@ -5,7 +5,7 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm("Login", "Home", FormMethod.Post))
+@using (Html.BeginForm("bruh", "LoginController", FormMethod.Post))
 {
     <fieldset>
         <legend>Login</legend>
@@ -20,12 +20,20 @@
         }
         <table>
             <tr>
-                <td><label class="login-label" value="@Request["Username"]">Username:</label></td>
+                <td>@Html.LabelFor(User => User.username) </td>
+                <td> @Html.EditorFor(User => User.username) </td>
             </tr>
             <tr>
-                <td>
-                    <label class="login-label" value="@Request["UserID"]">password:</label>
-                </td>
+                <td></td>
+                <td>@Html.ValidationMessageFor(User => User.username) </td>
+            </tr>
+            <tr>
+                <td>@Html.LabelFor(User => User.password) </td>
+                <td> @Html.PasswordFor(User => User.password) </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td>@Html.ValidationMessageFor(User => User.username) </td>
             </tr>
             <tr>
                 <td></td>
@@ -33,11 +41,14 @@
                     <input type="submit" value="Login" />
                 </td>
                 <td>
-                    <input type="submit" value="register"/>
+                    <input type="submit" value="register" />
                 </td>
             </tr>
         </table>
     </fieldset>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
 }
 <!--
     <div class="pageContainer">
@@ -47,7 +58,7 @@
         <hr />
 
         <label class="login-label">Username:</label>
-       
+
         <br />
         <label class="login-label">Password:</label>
         <br />

@@ -12,6 +12,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Prototyp.Models;
+using MassTransit.Monitoring.Performance;
+
 namespace Prototyp.Controllers
 {
     public class LoginController : Controller
@@ -32,6 +34,23 @@ namespace Prototyp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        public ActionResult bruh(Prototyp.Models.User user)
+        {
+
+
+            int i = 1;
+            User userDetails = new User(i);
+            
+
+                
+                if(userDetails == null)
+                {
+                    user.loginErrorMessage = "wrong password or username";
+                    return View("Index", user);
+                }            
+            
+            return View(); 
+        }
         public ActionResult Login(User objUser)
         {
             users.Add(new Models.User(1));

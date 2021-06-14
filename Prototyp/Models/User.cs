@@ -58,7 +58,7 @@ namespace Prototyp.Models
                     {
                         role = reader.GetString(5);
                     }
-                    
+
                 }
                 catch (Exception e)
                 {
@@ -69,5 +69,32 @@ namespace Prototyp.Models
             DbManager.con.Close();
 
         }
+
+        private void logIn()
+        {
+            string sql = "SELECT COUNT(1) FROM User WHERE username=@username AND password=@password";
+            //SqlCommand command = new SqlCommand(sql, DbManager.con);
+            DbManager.con.Open();
+            using (SqlCommand command = new SqlCommand(sql, DbManager.con))
+            {
+                command.Parameters.AddWithValue("@username", user)
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    try
+                    {
+
+                    }
+                    catch (Exception e)
+                    {
+                        DbManager.con.Close();
+                        //throw;
+                    }
+                }
+            }
+         
+            DbManager.con.Close();
+
+        }
     }
+}
 }

@@ -27,7 +27,7 @@ namespace Prototyp.Controllers
         {
 
 
-            return View("~/Views/Login.cshtml", new User(1));
+            return View("~/Views/Login.cshtml", new User());
 
 
         }
@@ -85,13 +85,13 @@ namespace Prototyp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult loginTest(FormCollection form)
+        public ActionResult LoginUser(FormCollection form)
         {
             try
             {
                 var currentUser = new User();
 
-                string sql = "SELECT COUNT(1) FROM User WHERE username=@username AND password=@password";
+                string sql = "SELECT COUNT(1) FROM Users WHERE username=@username AND password=@password";
                 //SqlCommand command = new SqlCommand(sql, DbManager.con);
                 DbManager.con.Open();
                 using (SqlCommand command = new SqlCommand(sql, DbManager.con))
@@ -102,12 +102,13 @@ namespace Prototyp.Controllers
                     
                     if (count == 1)
                     {
-                        Session["username"] = currentUser.username;
-                        return Redirect("~/Views/Event.cshtml");
+                        ViewBag.Message = "Login successful";
+                        return View("~/Views/Login.cshtml");
                     }
                     else
                     {
-                        return View("");
+                        ViewBag.Message = "Login unsuccessful................";
+                        return View("~/Views/Login.cshtml");
                     }
                 }
                 DbManager.con.Close();

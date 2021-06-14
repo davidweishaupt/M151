@@ -5,7 +5,7 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm("loginTest", "Login"))
+@using (Html.BeginForm("LoginUser", "Login"))
 {
     <fieldset>
         <legend>Login</legend>
@@ -14,22 +14,22 @@
         @Html.ValidationSummary(true)
         @if (@ViewBag.Message != null)
         {
-            <div style="border: 1px solid red">
+            <div style="border: 1px solid white; color: white;">
                 @ViewBag.Message
             </div>
         }
-        <table>
+        <table style="color: white; padding-top: 20px;">
             <tr>
-                <td>@Html.LabelFor(User => User.username) </td>
-                <td> @Html.EditorFor(User => User.username, new { id = "txtUsername" }) </td>
+                <td style="padding-right: 15px;">@Html.LabelFor(User => User.username) </td>
+                <td style="color: black !important;"> @Html.EditorFor(User => User.username, new { id = "txtUsername" }) </td>
             </tr>
             <tr>
                 <td></td>
                 <td>@Html.ValidationMessageFor(User => User.username) </td>
             </tr>
             <tr>
-                <td>@Html.LabelFor(User => User.password) </td>
-                <td> @Html.PasswordFor(User => User.password, new { id = "txtPassword" }) </td>
+                <td style="padding-right: 15px;">@Html.LabelFor(User => User.password) </td>
+                <td style="color: black !important;"> @Html.PasswordFor(User => User.password, new { id = "txtPassword" }) </td>
             </tr>
             <tr>
                 <td></td>
@@ -40,9 +40,6 @@
                 <td></td>
                 <td>
                     <input type="submit" value="Login" />
-                </td>
-                <td>
-                    <input type="submit" value="register" />
                 </td>
             </tr>
         </table>

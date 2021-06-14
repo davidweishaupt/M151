@@ -14,7 +14,7 @@ namespace Prototyp
         public static void connectDatabase()
         {
             con = new SqlConnection();
-            con.ConnectionString = @"Data Source = THINKPAD\MSSQLSERVER2019;
+            con.ConnectionString = @"Data Source = WSDW\MSSQLSERVER2019;
                 Initial Catalog = RLP2021_INA3a_Gruppe2;
                 Integrated Security = True"; 
         }

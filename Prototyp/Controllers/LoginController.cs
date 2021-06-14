@@ -82,5 +82,43 @@ namespace Prototyp.Controllers
                 return RedirectToAction("Login");
             }
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult loginTest(FormCollection form)
+        {
+            try
+            {
+                var currentUser = new User();
+
+                string sql = "SELECT COUNT(1) FROM User WHERE username=@username AND password=@password";
+                //SqlCommand command = new SqlCommand(sql, DbManager.con);
+                DbManager.con.Open();
+                using (SqlCommand command = new SqlCommand(sql, DbManager.con))
+                {
+                    command.Parameters.AddWithValue("@username", form["username"].Trim());
+                    command.Parameters.AddWithValue("@password", form["password"].Trim());
+                    int count = Convert.ToInt32(command.ExecuteScalar());
+                    
+                    if (count == 1)
+                    {
+                        Session["username"] = currentUser.username;
+                        return Redirect("~/Views/Event.cshtml");
+                    }
+                    else
+                    {
+                        return View("");
+                    }
+                }
+                DbManager.con.Close();
+            }
+            catch (Exception e)
+            {
+                DbManager.con.Close();
+                return null;
+                //throw;
+            }
+
+        }
     }
 }

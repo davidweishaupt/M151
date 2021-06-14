@@ -14,7 +14,7 @@ namespace Prototyp.Models
         public string username { get; set; }
         [DisplayName("User Name")]
         [Required(ErrorMessage = "This field is mandatory")]
-       
+
         public string firstName { get; set; }
         public string lastName { get; set; }
         public string password { get; set; }
@@ -25,6 +25,11 @@ namespace Prototyp.Models
         public List<User> usernames { get; set; }
         public string loginErrorMessage { get; set; }
 
+        public User()
+        {
+
+        }
+        
         public User(int i)
         {
             //events = new List<Event>();
@@ -79,31 +84,6 @@ namespace Prototyp.Models
 
         }
 
-        private void logIn()
-        {
-            string sql = "SELECT COUNT(1) FROM User WHERE username=@username AND password=@password";
-            //SqlCommand command = new SqlCommand(sql, DbManager.con);
-            DbManager.con.Open();
-            using (SqlCommand command = new SqlCommand(sql, DbManager.con))
-            {
-                command.Parameters.AddWithValue("@username", user)
-                using (SqlDataReader reader = command.ExecuteReader())
-                {
-                    try
-                    {
-
-                    }
-                    catch (Exception e)
-                    {
-                        DbManager.con.Close();
-                        //throw;
-                    }
-                }
-            }
-         
-            DbManager.con.Close();
-
-        }
     }
 }
-}
+

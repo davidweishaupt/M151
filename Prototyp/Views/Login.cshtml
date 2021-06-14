@@ -5,7 +5,7 @@
     ViewBag.Title = "Login";
 }
 
-@using (Html.BeginForm("bruh", "LoginController", FormMethod.Post))
+@using (Html.BeginForm("loginTest", "Login"))
 {
     <fieldset>
         <legend>Login</legend>
@@ -21,7 +21,7 @@
         <table>
             <tr>
                 <td>@Html.LabelFor(User => User.username) </td>
-                <td> @Html.EditorFor(User => User.username) </td>
+                <td> @Html.EditorFor(User => User.username, new { id = "txtUsername" }) </td>
             </tr>
             <tr>
                 <td></td>
@@ -29,12 +29,13 @@
             </tr>
             <tr>
                 <td>@Html.LabelFor(User => User.password) </td>
-                <td> @Html.PasswordFor(User => User.password) </td>
+                <td> @Html.PasswordFor(User => User.password, new { id = "txtPassword" }) </td>
             </tr>
             <tr>
                 <td></td>
                 <td>@Html.ValidationMessageFor(User => User.username) </td>
             </tr>
+
             <tr>
                 <td></td>
                 <td>
